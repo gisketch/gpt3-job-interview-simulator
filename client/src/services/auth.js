@@ -9,13 +9,16 @@ const auth = firebase.auth();
 
 const signIn = async (email, password) => {
   try {
-    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const userCredential = await auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
     const user = userCredential.user;
     const idToken = await user.getIdToken();
 
     await loginUser(idToken, user.uid, user.email);
 
-    console.log(idToken)
+    console.log(idToken);
 
     return userCredential.user;
   } catch (error) {
@@ -25,11 +28,14 @@ const signIn = async (email, password) => {
 
 const register = async (email, password, displayName) => {
   try {
-    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+    const userCredential = await auth.createUserWithEmailAndPassword(
+      email,
+      password
+    );
     const user = userCredential.user;
     await user.updateProfile({ displayName });
     const idToken = await user.getIdToken();
-    
+
     await registerUser(idToken, user.uid, user.email, user.displayName);
 
     return userCredential.user;
@@ -46,4 +52,4 @@ const signOut = async () => {
   }
 };
 
-export {signIn,register,signOut};
+export { signIn, register, signOut };

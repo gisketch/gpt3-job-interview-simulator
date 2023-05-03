@@ -9,6 +9,7 @@ connectDB();
 //Routes
 const userRoutes = require("./routes/userRoutes");
 const interviewRoutes = require("./routes/interviewRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 //Middlewares
 const errorHandler = require("./middleware/errorMiddleware");
@@ -21,6 +22,7 @@ app.use(cors());
 
 app.use('/api/users', userRoutes); // User routes
 app.use('/api/interviews', interviewRoutes); // Interview routes
+app.use('/api/upload', uploadRoutes); // Interview routes
 
 app.use(errorHandler)
 

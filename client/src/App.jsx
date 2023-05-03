@@ -1,24 +1,24 @@
-import { useState } from 'react'
-import { signIn, register, signOut } from './services/auth'
-import './App.css'
-
+import { useState } from 'react';
+import UploadForm from './components/UploadForm';
+import { signIn, register, signOut } from './services/auth';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState({
     displayName: '',
     email: '',
     password: '',
-  })
+  });
 
   const handleLogin = (e) => {
-    e.preventDefault()
-    signIn(user.email, user.password)
-  }
+    e.preventDefault();
+    signIn(user.email, user.password);
+  };
 
   const handleRegister = (e) => {
-    e.preventDefault()
-    register(user.email, user.password, user.displayName)
-  }
+    e.preventDefault();
+    register(user.email, user.password, user.displayName);
+  };
 
   return (
     <>
@@ -29,7 +29,10 @@ function App() {
           type="text"
           id="displayName"
           onChange={(e) =>
-            setUser((prevState) => ({ ...prevState, displayName: e.target.value }))
+            setUser((prevState) => ({
+              ...prevState,
+              displayName: e.target.value,
+            }))
           }
         />
         <label htmlFor="email">Email</label>
@@ -56,8 +59,12 @@ function App() {
         </button>
       </form>
 
+      <div>
+        <h4>Upload Resume</h4>
+        <UploadForm />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
