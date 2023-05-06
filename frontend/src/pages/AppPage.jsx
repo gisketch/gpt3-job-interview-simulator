@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
+import { UserContext } from '../contexts/UserContext'
 
 const AppPage = () => {
   const { logout } = useContext(AuthContext)
+  const { user } = useContext(UserContext)
 
   return (
     <div>
@@ -11,13 +13,9 @@ const AppPage = () => {
       <div>
         Interviews Panel
         <div>
-          <ul>
-            <li>interview1</li>
-            <li>interview1</li>
-            <li>interview1</li>
-          </ul>
+          <ul>{user.interviews.map((interview) => {})}</ul>
         </div>
-        <div>Name Profile</div>
+        <div>{user.name}</div>
         <div>ThemeToggler</div>
       </div>
       <div>

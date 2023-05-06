@@ -70,7 +70,7 @@ const login = asyncHandler(async (req, res) => {
 
 // @desc   Get user profile
 // @route  GET /api/users/:id
-// @access Public
+// @access Private
 const getProfile = asyncHandler(async (req, res) => {
   const uid = req.params.id
 
@@ -78,9 +78,10 @@ const getProfile = asyncHandler(async (req, res) => {
     const user = await User.findOne({ uid }) //Find user by email
     if (user) {
       res.status(200).json({
-        uid,
+        user,
         registered: true,
       })
+      console.log("hello what's up")
     } else {
       res.status(200).json({
         uid,
@@ -104,12 +105,13 @@ const verify = asyncHandler(async (req, res) => {
       res.status(200).json({
         message: 'Token is verified!',
         verified: true,
-        data: user,
+        uid,
       })
     } else {
-      throw new Error('Cannot verify user', 400)
+      throw new Error('Cannot verify user2', 400)
     }
   } catch (error) {
+    console.log(error)
     throw new Error('Cannot verify user', 400)
   }
 })

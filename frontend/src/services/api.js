@@ -40,10 +40,17 @@ export const registerUser = async (token, uid, email, name) => {
   }
 }
 
-export const getUser = async (uid) => {
+export const getUser = async (token, uid) => {
   try {
-    const response = await axios.get(`${BASE_URL}/${uid}`)
-    return response.data
+    const response = await fetch(`${BASE_URL}/${uid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    const data = await response.json()
+    return data
   } catch (error) {
     console.error('Error fetching user.', error)
     throw error
@@ -61,14 +68,9 @@ export const verifyToken = async (token) => {
     })
 
     const data = await response.json()
-
-    if (data.verified) {
-      return true
-    } else {
-      return false
-    }
+    return data
   } catch (error) {
     console.error('Error verifying token:', error)
-    return false
+    return { verified: false, uid: null }
   }
 }

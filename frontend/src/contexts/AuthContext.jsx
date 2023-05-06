@@ -4,10 +4,6 @@ import { signOut } from '../services/auth'
 
 export const AuthContext = createContext()
 
-const saveToken = (token) => {
-  localStorage.setItem('authToken', token)
-}
-
 const AuthContextProvider = (props) => {
   const initialToken = localStorage.getItem('authToken')
   const [token, setToken] = useState(initialToken)
@@ -16,9 +12,10 @@ const AuthContextProvider = (props) => {
   useEffect(() => {
     const checkToken = async () => {
       if (token) {
-        const isValid = await verifyToken(token)
-        if (isValid) {
+        const verifiedData = await verifyToken(token)
+        if (verifiedData.verified) {
           setLoggedIn(true)
+          localStorage.setItem('authToken', token)
         } else {
           localStorage.removeItem('authToken')
           setToken(null)

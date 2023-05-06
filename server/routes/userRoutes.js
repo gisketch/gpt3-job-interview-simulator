@@ -12,6 +12,6 @@ const router = express.Router()
 router.post('/register', authenticate, register)
 router.post('/login', authenticate, login)
 router.get('/verify', authenticate, verify)
-router.get('/:id', getProfile)
+router.get('/:id', authenticate, getProfile)
 
 module.exports = router

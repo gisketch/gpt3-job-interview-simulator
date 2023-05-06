@@ -29,7 +29,7 @@ const LandingPage = () => {
               className="text-2xl font-bold
           dark:text-white"
             >
-              JobPrep
+              JobPrep.ai
             </h1>
             <h1 className="ml-2 text-sm text-gray-500">by gisketch</h1>
           </div>
