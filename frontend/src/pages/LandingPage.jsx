@@ -2,9 +2,20 @@ import AppLogo from '../assets/logo.png'
 import LandingImage from '../assets/landing.png'
 import LoginForm from '../components/LandingPage/LoginForm'
 import ThemeToggler from '../components/ThemeToggler'
-import RegistrationForm from '../components/LandingPage/RegistrationForm'
+import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContext'
 
 const LandingPage = () => {
+  const navigate = useNavigate()
+  const { loggedIn } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/')
+    }
+  }, [])
+
   return (
     <div
       className="overflow-x-hidden bg-white h-screen
@@ -13,12 +24,15 @@ const LandingPage = () => {
       <header className="flex flex-row px-8 py-8 justify-between items-center">
         <div className="flex flex-row items-center">
           <img src={AppLogo} className="mr-4 w-12" />
-          <h1
-            className="text-2xl font-bold
+          <div className="flex flex-row items-baseline">
+            <h1
+              className="text-2xl font-bold
           dark:text-white"
-          >
-            JobPrep
-          </h1>
+            >
+              JobPrep
+            </h1>
+            <h1 className="ml-2 text-sm text-gray-500">by gisketch</h1>
+          </div>
         </div>
         <ThemeToggler />
       </header>
@@ -32,14 +46,10 @@ const LandingPage = () => {
             max-md:px-16
             "
         >
-          <RegistrationForm
+          <LoginForm
             className="
-              max-lg:mx-auto"
+            max-lg:mx-auto"
           />
-          {/* <LoginForm
-            className="
-              max-lg:mx-auto"
-          /> */}
         </div>
         <div
           className="

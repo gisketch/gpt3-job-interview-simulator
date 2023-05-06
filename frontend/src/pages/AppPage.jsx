@@ -1,6 +1,10 @@
 import { Outlet } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthContext'
 
 const AppPage = () => {
+  const { logout } = useContext(AuthContext)
+
   return (
     <div>
       App main
@@ -20,6 +24,15 @@ const AppPage = () => {
         <h1>Interview</h1>
         {<Outlet />}
       </div>
+      <button
+        onClick={() => {
+          logout(() => {
+            console.log('Logged out')
+          })
+        }}
+      >
+        Logout
+      </button>
     </div>
   )
 }

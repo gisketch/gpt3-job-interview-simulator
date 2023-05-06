@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Route,
   RouterProvider,
@@ -15,8 +16,7 @@ import LandingPage from './pages/LandingPage'
 import Interview from './components/AppPage/Interview'
 
 //ContextProviders
-import ThemeContextProvider, { ThemeContext } from './contexts/ThemeContext'
-import { useContext } from 'react'
+import { ThemeContext } from './contexts/ThemeContext'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route
         path="/"
         element={
-          <ProtectedRoute isAuthenticated={false}>
+          <ProtectedRoute>
             <AppPage />
           </ProtectedRoute>
         }

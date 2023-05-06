@@ -2,12 +2,15 @@
 import React from 'react'
 import App from '../App'
 import ThemeContextProvider from '../contexts/ThemeContext'
+import AuthContextProvider from '../contexts/AuthContext'
 
 const AppWrapper = () => {
   return (
-    <ThemeContextProvider>
-      <App />
-    </ThemeContextProvider>
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <App />
+      </ThemeContextProvider>
+    </AuthContextProvider>
   )
 }
 

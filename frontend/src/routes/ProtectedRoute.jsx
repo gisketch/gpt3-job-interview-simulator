@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContext'
 
-const ProtectedRoute = ({ isAuthenticated, children }) => {
-  if (isAuthenticated) {
+const ProtectedRoute = ({ children }) => {
+  const { token, loggedIn } = useContext(AuthContext)
+
+  if (loggedIn) {
     return children
   }
 
