@@ -81,7 +81,6 @@ const getProfile = asyncHandler(async (req, res) => {
         user,
         registered: true,
       })
-      console.log("hello what's up")
     } else {
       res.status(200).json({
         uid,

@@ -10,9 +10,12 @@ export default {
         'dark-2': '#242627',
         'dark-3': '#343839',
         'dark-4': '#474b4d',
+        'blue-icon': '#3E90EF',
+        'orange-icon': '#D84B10',
+        'purple-icon': '#8D55EA',
       },
       fontFamily: {
-        sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

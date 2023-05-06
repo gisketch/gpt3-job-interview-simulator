@@ -1,36 +1,16 @@
-import { Outlet } from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
-import { UserContext } from '../contexts/UserContext'
+import Sidebar from '../components/AppPage/Sidebar'
+import Interview from '../components/AppPage/Interview'
 
 const AppPage = () => {
-  const { logout } = useContext(AuthContext)
-  const { user } = useContext(UserContext)
-
   return (
-    <div>
-      App main
-      <div>
-        Interviews Panel
-        <div>
-          <ul>{user.interviews.map((interview) => {})}</ul>
-        </div>
-        <div>{user.name}</div>
-        <div>ThemeToggler</div>
-      </div>
-      <div>
-        <h1>Interview</h1>
-        {<Outlet />}
-      </div>
-      <button
-        onClick={() => {
-          logout(() => {
-            console.log('Logged out')
-          })
-        }}
+    <div className="bg-slate-300 h-screen dark:bg-dark-1 p-4">
+      <div
+        id="AppContainer"
+        className="flex flex-row w-full max-w-screen-xl mx-auto gap-4"
       >
-        Logout
-      </button>
+        <Sidebar />
+        <Interview />
+      </div>
     </div>
   )
 }
