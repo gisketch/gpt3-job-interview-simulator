@@ -15,6 +15,11 @@ const authenticate = async (req, res, next) => {
     const decoded = await admin.auth().verifyIdToken(bearer) // Verify token
 
     req.user = decoded // Set user to decoded token
+    if (req.user.picture) {
+      req.picture = req.user.picture
+    } else {
+      req.picture = null
+    }
     req.body.uid = decoded.uid
     req.verified = true
     next()

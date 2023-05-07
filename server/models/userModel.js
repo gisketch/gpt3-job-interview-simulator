@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
   uid: {
@@ -15,12 +15,15 @@ const userSchema = mongoose.Schema({
     required: [true, 'Please enter your email'],
     unique: true,
   },
+  photoURL: {
+    type: String,
+  },
   interviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Interview',
-    }
-  ]
+    },
+  ],
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)

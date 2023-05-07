@@ -12,15 +12,21 @@ const handleFetchUser = async () => {
 }
 
 const UserContextProvider = (props) => {
-  const { loggedIn } = useContext(AuthContext)
+  const { loggedIn, logout } = useContext(AuthContext)
   const [user, setUser] = useState(null)
 
   useEffect(() => {
     const fetchAndSetUser = async () => {
       if (loggedIn) {
         const fetchedUser = await handleFetchUser()
-        setUser(fetchedUser)
-        console.log('Fetched ' + fetchedUser.name)
+        if (!fetchedUser) {
+          logout(() => {
+            console.log('error fetching user. try logging in again.')
+          })
+        } else {
+          setUser(fetchedUser)
+          console.log('Fetched ' + fetchedUser.name)
+        }
       }
     }
 

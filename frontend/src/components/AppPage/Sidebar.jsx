@@ -55,7 +55,6 @@ const Sidebar = () => {
       <h2
         className="text-md flex flex-row pt-4 px-8 text-slate-600
           dark:text-dark-4"
-        my
       >
         Interview List
       </h2>

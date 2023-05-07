@@ -31,7 +31,11 @@ const ProfileItem = ({ props, user }) => {
        hover:cursor-pointer hover:drop-shadow-lg
        dark:text-gray-300 dark:border-dark-3
        dark:hover:border-dark-4"
-        onClick={logout}
+        onClick={() => {
+          logout(() => {
+            console.log('Logged out!')
+          })
+        }}
       >
         Log out
       </div>

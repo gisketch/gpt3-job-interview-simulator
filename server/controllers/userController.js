@@ -8,6 +8,15 @@ const User = require('../models/userModel')
 const register = asyncHandler(async (req, res) => {
   const { uid, email, name } = req.body
 
+  //TODO: if picture == null, save random pic else use req.picture
+  let photoURL = null
+  if (req.picture === null) {
+    //save random pic
+    console.log('no pic, randomizing')
+  } else {
+    photoURL = req.picture
+  }
+
   // Handle missing fields
   if (!uid || !email || !name) {
     res.status(400).json({
@@ -26,12 +35,16 @@ const register = asyncHandler(async (req, res) => {
     uid, //IMPORTANT!! Unique identifier taken from Request Body
     name,
     email,
+    photoURL,
   })
+
+  console.log(createdUser)
 
   res.status(200).json({
     message: 'Registered!',
     uid,
     name,
+    photoURL,
   })
 
   console.log(`Registered ${name}`)
@@ -61,6 +74,7 @@ const login = asyncHandler(async (req, res) => {
       message: 'Logged in!',
       uid: user.uid,
       email,
+      photoURL,
     })
     console.log(`${email} logged in!`)
   } else {
@@ -107,7 +121,7 @@ const verify = asyncHandler(async (req, res) => {
         uid,
       })
     } else {
-      throw new Error('Cannot verify user2', 400)
+      throw new Error('Cannot verify user, user not in database!', 400)
     }
   } catch (error) {
     console.log(error)

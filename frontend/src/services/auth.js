@@ -33,9 +33,12 @@ const signInWithGoogle = async () => {
     const res = await signInWithPopup(auth, googleProvider)
     const { accessToken, uid, email, displayName } = res.user
 
-    const user = await getUser(res.user.uid)
+    const user = await getUser(accessToken, uid)
+
     if (!user.registered) {
-      registerUser(accessToken, uid, email, displayName)
+      console.log('Registering new user from Google!.')
+      await registerUser(accessToken, uid, email, displayName)
+      console.log('Registered!.')
       return accessToken
     } else {
       console.log('User already registered. Logging in.')
