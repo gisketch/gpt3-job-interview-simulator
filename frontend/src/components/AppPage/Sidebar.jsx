@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import AppLogo from '../../assets/logo.png'
-import ThemeToggler from '../../components/ThemeToggler'
 import InterviewItem from '../common/InterviewItem'
 import ProfileItem from '../common/ProfileItem'
 import SidebarButton from '../common/SidebarButton'
