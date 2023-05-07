@@ -1,14 +1,10 @@
 import { useParams } from 'react-router-dom'
 
 const Interview = () => {
-  const { id } = useParams()
+  const interviewId = useParams()
+  const hasId = !!interviewId.id
 
-  return (
-    <div
-      id="Interview"
-      className="flex-1 h-auto bg-slate-200  rounded-3xl dark:bg-dark-2"
-    ></div>
-  )
+  return <div>Interview</div>
 }
 
 export default Interview

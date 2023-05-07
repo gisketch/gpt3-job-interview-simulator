@@ -29,7 +29,8 @@ const ProfileItem = ({ props, user }) => {
       <div
         className="border border-slate-400 p-2 rounded-xl text-center text-slate-500
        hover:cursor-pointer hover:drop-shadow-lg
-       dark:text-gray-300 dark:border-dark-4"
+       dark:text-gray-300 dark:border-dark-3
+       dark:hover:border-dark-4"
         onClick={logout}
       >
         Log out

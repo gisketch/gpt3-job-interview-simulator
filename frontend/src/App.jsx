@@ -17,6 +17,8 @@ import Interview from './components/AppPage/Interview'
 
 //ContextProviders
 import { ThemeContext } from './contexts/ThemeContext'
+import Settings from './components/AppPage/Settings'
+import About from './components/AppPage/About'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +31,10 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       >
+        <Route index element={<Interview />} />
         <Route path="/i/:id" element={<Interview />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
       </Route>
       <Route path="/login" element={<LandingPage />} />
     </>
