@@ -1,15 +1,18 @@
+import DialogBox from '../common/DialogBox'
+import PromptInput from '../common/PromptInput'
+
 const CreateInterview = () => {
   return (
     <div
       id="CreateInterviewWrapper"
-      className="border-slate-900 border text-center flex flex-col gap-8 justify-center items-center h-full"
+      className="text-center flex flex-col justify-end items-center flex-1"
     >
-      <div className="text-4xl font-medium flex flex-col gap-2">
+      {/* <div className="text-4xl font-medium flex flex-col gap-2">
         <h1>Simulate a Job Interview</h1>
         <span>for a position of </span>
         <input
           className="
-            bg-transparent font-normal text-center border border-black 
+            bg-transparent font-normal text-center border-black 
             focus:outline-none"
           type="text"
           name="prompt"
@@ -25,7 +28,10 @@ const CreateInterview = () => {
       </div>
       <button className="text-2xl bg-blue-icon text-white p-4 w-72 rounded-xl">
         Simulate
-      </button>
+      </button> */}
+      <DialogBox />
+      <DialogBox isUser={true} />
+      <PromptInput />
     </div>
   )
 }

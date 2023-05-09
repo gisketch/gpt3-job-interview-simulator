@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import AppLogo from '../../assets/logo.png'
-import InterviewItem from '../common/InterviewItem'
-import ProfileItem from '../common/ProfileItem'
-import SidebarButton from '../common/SidebarButton'
+import InterviewItem from './Sidebar/InterviewItem'
+import ProfileItem from './Sidebar/ProfileItem'
+import SidebarButton from './Sidebar/SidebarButton'
 import { UserContext } from '../../contexts/UserContext'
-import SidebarThemeToggler from '../common/SidebarThemeToggler'
+import SidebarThemeToggler from './Sidebar/SidebarThemeToggler'
 
 import { BiBriefcaseAlt2 } from 'react-icons/bi'
 import { FiSettings } from 'react-icons/fi'
@@ -16,7 +16,7 @@ const Sidebar = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div id="Sidebar" className="w-72 flex flex-col gap-4">
+    <div id="Sidebar" className="min-w-[18rem] w-72 flex flex-col gap-4">
       <div
         id="TopContainers"
         className="flex flex-col gap-4 border-b border-b-slate-200 pb-4
